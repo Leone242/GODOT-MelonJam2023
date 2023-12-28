@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvcsq6tphnwwr"]
+
+[ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
+size = Vector2(1154, 186)
+
+[node name="Main" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1158.0
+offset_bottom = 656.0
+
+[node name="Weapon" parent="." instance=ExtResource("1_anqxf")]
+position = Vector2(197, 550)
+
+[node name="Table" type="Node2D" parent="."]
+
+[node name="Table" type="Area2D" parent="Table"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Table"]
+position = Vector2(579, 314)
+shape = SubResource("RectangleShape2D_ydqo5")
+
+[node name="Panel" type="Panel" parent="Table"]
+modulate = Color(0.384129, 0.458139, 0.0558828, 1)
+offset_left = 7.0
+offset_top = 212.0
+offset_right = 1164.0
+offset_bottom = 416.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(571, 314)
