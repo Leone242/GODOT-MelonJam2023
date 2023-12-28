@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dfwqf04y2d5f4" path="res://icon.svg" id="2_j0k3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
-size = Vector2(1154, 186)
+size = Vector2(1141, 153)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qh5jr")
@@ -18,21 +18,26 @@ offset_right = 1158.0
 offset_bottom = 656.0
 
 [node name="Weapon" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
-position = Vector2(197, 550)
+position = Vector2(249, 534)
 mark = NodePath("../Marker2D")
 
 [node name="Table" type="Node2D" parent="CanvasGroup"]
+position = Vector2(-13, -142)
 
 [node name="Icon" type="Sprite2D" parent="CanvasGroup/Table"]
-position = Vector2(578.5, 318.5)
-scale = Vector2(8.89844, 1.42969)
+position = Vector2(586, 449.5)
+scale = Vector2(9.01563, 1.25781)
 texture = ExtResource("2_j0k3y")
 
 [node name="Table" type="Area2D" parent="CanvasGroup/Table"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Table/Table"]
-position = Vector2(579, 314)
+position = Vector2(599, 450)
 shape = SubResource("RectangleShape2D_ydqo5")
 
 [node name="Marker2D" type="Marker2D" parent="CanvasGroup"]
 position = Vector2(571, 314)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 324)
+scale = Vector2(-214.752, 256.389)
