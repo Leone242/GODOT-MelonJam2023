@@ -7,27 +7,30 @@ size = Vector2(1154, 186)
 
 [node name="Main" type="Node2D"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+y_sort_enabled = true
+
+[node name="Panel" type="Panel" parent="CanvasGroup"]
 offset_right = 1158.0
 offset_bottom = 656.0
 
-[node name="Weapon" parent="." instance=ExtResource("1_anqxf")]
+[node name="Weapon" parent="CanvasGroup" instance=ExtResource("1_anqxf")]
 position = Vector2(197, 550)
 
-[node name="Table" type="Node2D" parent="."]
+[node name="Table" type="Node2D" parent="CanvasGroup"]
 
-[node name="Table" type="Area2D" parent="Table"]
+[node name="Table" type="Area2D" parent="CanvasGroup/Table"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Table"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Table/Table"]
 position = Vector2(579, 314)
 shape = SubResource("RectangleShape2D_ydqo5")
 
-[node name="Panel" type="Panel" parent="Table"]
+[node name="Panel" type="Panel" parent="CanvasGroup/Table"]
 modulate = Color(0.384129, 0.458139, 0.0558828, 1)
 offset_left = 7.0
 offset_top = 212.0
 offset_right = 1164.0
 offset_bottom = 416.0
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="CanvasGroup"]
 position = Vector2(571, 314)
