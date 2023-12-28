@@ -1,7 +1,7 @@
-CanvasGroup
 Button
-AnimatedSprite2D
 Panel
+CanvasGroup
+AnimatedSprite2D
 Marker2D
 CollisionShape2D
 Area2D

@@ -2,7 +2,7 @@ extends Node2D
 
 var selected = false
 var weapon_estate = 0
-
+var on_table = false
 @export var mark: Marker2D
 
 
@@ -12,8 +12,11 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("mouse_select"):
 		FollowMouse()
-	elif Input.is_action_just_released("mouse_select") and !selected:
+	elif Input.is_action_just_released("mouse_select") and on_table:
 		position = mark.position
+		$Craft.show()
+	elif Input.is_action_just_released("mouse_select") and !on_table:
+		$Craft.hide()
 	AssembleWeapon()
 		
 func FollowMouse():
@@ -22,15 +25,18 @@ func FollowMouse():
 
 func _on_area_2d_area_entered(area):
 	if area.name == "Table":
+		on_table = true
 		selected = false
-		$Craft.show()
 		print("foi")
+	else:
+		on_table = false
 
 
 func _on_area_2d_area_exited(area):
 	if area.name == "Table":
 		print("saiu")
 		selected = true
+		on_table = false
 	else:
 		selected = false
 

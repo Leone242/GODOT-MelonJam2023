@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=5 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
+[ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
 [ext_resource type="Texture2D" uid="uid://dfwqf04y2d5f4" path="res://icon.svg" id="2_j0k3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(1154, 186)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_qh5jr")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 y_sort_enabled = true
