@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=4 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
+[ext_resource type="Texture2D" uid="uid://dfwqf04y2d5f4" path="res://icon.svg" id="2_j0k3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(1154, 186)
@@ -14,23 +15,22 @@ y_sort_enabled = true
 offset_right = 1158.0
 offset_bottom = 656.0
 
-[node name="Weapon" parent="CanvasGroup" instance=ExtResource("1_anqxf")]
+[node name="Weapon" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
 position = Vector2(197, 550)
+mark = NodePath("../Marker2D")
 
 [node name="Table" type="Node2D" parent="CanvasGroup"]
+
+[node name="Icon" type="Sprite2D" parent="CanvasGroup/Table"]
+position = Vector2(578.5, 318.5)
+scale = Vector2(8.89844, 1.42969)
+texture = ExtResource("2_j0k3y")
 
 [node name="Table" type="Area2D" parent="CanvasGroup/Table"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Table/Table"]
 position = Vector2(579, 314)
 shape = SubResource("RectangleShape2D_ydqo5")
-
-[node name="Panel" type="Panel" parent="CanvasGroup/Table"]
-modulate = Color(0.384129, 0.458139, 0.0558828, 1)
-offset_left = 7.0
-offset_top = 212.0
-offset_right = 1164.0
-offset_bottom = 416.0
 
 [node name="Marker2D" type="Marker2D" parent="CanvasGroup"]
 position = Vector2(571, 314)

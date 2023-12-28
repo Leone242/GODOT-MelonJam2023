@@ -43,12 +43,17 @@ texture = ExtResource("2_4o64x")
 shape = SubResource("RectangleShape2D_4tmxm")
 
 [node name="Craft" type="Button" parent="."]
+visible = false
 offset_left = -110.0
 offset_top = -25.0
 offset_right = 111.0
 offset_bottom = 24.0
-toggle_mode = true
-button_pressed = true
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
