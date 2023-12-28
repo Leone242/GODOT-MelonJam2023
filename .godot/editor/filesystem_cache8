@@ -7,7 +7,12 @@ menu.gd::GDScript::-1::1703795019::0::1::::<>Node2D<>::
 menu.tscn::PackedScene::1100685719368788089::1703796750::0::1::::<><>::res://menu.gd
 Weapon.gd::GDScript::-1::1703795019::0::1::::<>Node2D<>::
 weapon.tscn::PackedScene::3683656549460101985::1703799893::0::1::::<><>::res://Weapon.gd<>uid://ds2tdjqmx57t::::res://sprites/espadas/SemiEspadaB.png<>uid://dfyrtkil0na5::::res://sprites/espadas/EspadaB.png<>uid://cchbuyl8vgvsw::::res://sprites/espadas/EspadaF.png
-::res://sprites/::1703796571
+::res://sprites/::1703802006
+::res://sprites/cursores/::1703802015
+MarteloF.png::CompressedTexture2D::2382291215577020183::1703802015::1703802015::1::::<><>::
+MarteloSelecionado.png::CompressedTexture2D::7586134508749363362::1703802015::1703802015::1::::<><>::
+MãoA.png::CompressedTexture2D::7976894392414065846::1703802015::1703802015::1::::<><>::
+MãoF.png::CompressedTexture2D::6816321555840141363::1703802015::1703802015::1::::<><>::
 ::res://sprites/espadas/::1703799964
 Bainha.png::CompressedTexture2D::4045523354956625718::1703796531::1703796571::1::::<><>::
 EspadaA.png::CompressedTexture2D::939266107517724107::1703796531::1703796571::1::::<><>::
