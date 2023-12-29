@@ -1,6 +1,6 @@
-Button
 CollisionShape2D
 Area2D
+Button
 ResourcePreloader
 Node2D
 Camera2D

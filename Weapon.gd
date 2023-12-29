@@ -4,7 +4,6 @@ var selected = false
 var weapon_estate = 0
 var on_table = false
 @export var mark: Marker2D
-var cursor = preload("res://sprites/cursores/MãoA.png")
 
 
 func _ready():
@@ -59,8 +58,6 @@ func AssembleWeapon():
 			get_node("Icon5").show()
 			
 			$Craft.hide()
-			Input.set_custom_mouse_cursor(cursor, 
-				Input.CURSOR_ARROW, Vector2(16, 16))
 
 
 func _on_craft_pressed():

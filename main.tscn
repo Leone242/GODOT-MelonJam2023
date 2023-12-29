@@ -23,7 +23,6 @@ var selected = false
 var weapon_estate = 0
 var on_table = false
 @export var mark: Marker2D
-var cursor = preload(\"res://sprites/cursores/MãoA.png\")
 
 
 func _ready():
@@ -78,8 +77,7 @@ func AssembleWeapon():
 			get_node(\"Icon5\").show()
 			
 			$Craft.hide()
-			Input.set_custom_mouse_cursor(cursor, 
-				Input.CURSOR_ARROW, Vector2(16, 16))
+			
 
 
 func _on_craft_pressed():
@@ -103,7 +101,7 @@ var selected = false
 var weapon_estate = 0
 var on_table = false
 @export var mark: Marker2D
-var cursor = preload(\"res://sprites/cursores/MãoA.png\")
+
 
 
 func _ready():
@@ -158,8 +156,7 @@ func AssembleWeapon():
 			get_node(\"Icon5\").show()
 			
 			$Craft.hide()
-			Input.set_custom_mouse_cursor(cursor, 
-				Input.CURSOR_ARROW, Vector2(16, 16))
+			
 
 
 func _on_craft_pressed():
@@ -275,6 +272,7 @@ position = Vector2(16, 16)
 scale = Vector2(3, 3)
 texture = ExtResource("5_xfbyw")
 
+[connection signal="mouse_exited" from="CanvasGroup/Table/Table" to="Cursor" method="_on_table_mouse_exited"]
 [connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]
 
 [editable path="CanvasGroup/Mace"]
