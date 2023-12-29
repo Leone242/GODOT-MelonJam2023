@@ -1,9 +1,180 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=19 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
 [ext_resource type="Texture2D" uid="uid://dfwqf04y2d5f4" path="res://icon.svg" id="2_j0k3y"]
 [ext_resource type="PackedScene" uid="uid://b54ybogrb6swr" path="res://sprites/cursores/cursor.tscn" id="2_xgn82"]
+[ext_resource type="Texture2D" uid="uid://b8xvduydg17an" path="res://sprites/maças/SemiMaçaB.png" id="4_3gv1x"]
+[ext_resource type="Texture2D" uid="uid://cxb53njoue468" path="res://sprites/maças/MaçaB.png" id="5_eew8u"]
+[ext_resource type="Texture2D" uid="uid://8688uoya6i5d" path="res://sprites/cursores/MarteloF.png" id="5_xfbyw"]
+[ext_resource type="Texture2D" uid="uid://bc2ou8crbwwyc" path="res://sprites/maças/MaçaCompletaB.png" id="6_ri0c1"]
+[ext_resource type="Texture2D" uid="uid://bdcs6pvdp732s" path="res://sprites/maças/MaçaCompletaF.png" id="7_mefm3"]
+[ext_resource type="Texture2D" uid="uid://ca256t3sblus7" path="res://sprites/maças/Bainha.png" id="8_87mye"]
+[ext_resource type="Texture2D" uid="uid://rl1uyek3lgyn" path="res://sprites/machados/SemiMachadoB.png" id="9_b26sh"]
+[ext_resource type="Texture2D" uid="uid://b6g5ojlo4xy0k" path="res://sprites/machados/MachadoB.png" id="10_ntx0p"]
+[ext_resource type="Texture2D" uid="uid://c6lcfqnokcg48" path="res://sprites/machados/MachadoCompletoB.png" id="11_gqbx6"]
+[ext_resource type="Texture2D" uid="uid://ctf5geubfxuhg" path="res://sprites/machados/MachadoCompletoF.png" id="12_rwkau"]
+[ext_resource type="Texture2D" uid="uid://is2m32fkichj" path="res://sprites/machados/bainha.png" id="13_l0dxl"]
+
+[sub_resource type="GDScript" id="GDScript_kxox1"]
+script/source = "extends Node2D
+
+var selected = false
+var weapon_estate = 0
+var on_table = false
+@export var mark: Marker2D
+var cursor = preload(\"res://sprites/cursores/MãoA.png\")
+
+
+func _ready():
+	pass
+	
+func _process(delta):
+	if Input.is_action_pressed(\"mouse_select\") and selected:
+		FollowMouse()
+	elif Input.is_action_just_released(\"mouse_select\") and on_table:
+		position = mark.position
+		$Craft.show()
+	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
+		$Craft.hide()
+	AssembleWeapon()
+		
+func FollowMouse():
+	position = get_global_mouse_position()
+
+
+func _on_area_2d_area_entered(area):
+	if area.name == \"Table\":
+		on_table = true
+		print(\"foi\")
+	else:
+		on_table = false
+
+
+func _on_area_2d_area_exited(area):
+	if area.name == \"Table\":
+		on_table = false
+
+
+
+func AssembleWeapon():
+	match weapon_estate:
+		0:
+			get_node(\"Icon\").show()
+			
+		1:
+			get_node(\"Icon\").hide()	
+			get_node(\"Icon2\").show()
+		2:
+			get_node(\"Icon2\").hide()
+			get_node(\"Icon3\").show()
+			get_node(\"Bainha\").show()
+		3:
+			get_node(\"Icon3\").hide()
+			get_node(\"Bainha\").hide()
+			get_node(\"Icon4\").show()	
+		4:
+			get_node(\"Icon4\").hide()	
+			get_node(\"Icon5\").show()
+			
+			$Craft.hide()
+			Input.set_custom_mouse_cursor(cursor, 
+				Input.CURSOR_ARROW, Vector2(16, 16))
+
+
+func _on_craft_pressed():
+	if weapon_estate <=3:
+		weapon_estate +=1
+
+
+
+func _on_area_2d_mouse_entered():
+	selected = true
+
+
+func _on_area_2d_mouse_exited():
+	selected = false
+"
+
+[sub_resource type="GDScript" id="GDScript_nn7fl"]
+script/source = "extends Node2D
+
+var selected = false
+var weapon_estate = 0
+var on_table = false
+@export var mark: Marker2D
+var cursor = preload(\"res://sprites/cursores/MãoA.png\")
+
+
+func _ready():
+	pass
+	
+func _process(delta):
+	if Input.is_action_pressed(\"mouse_select\") and selected:
+		FollowMouse()
+	elif Input.is_action_just_released(\"mouse_select\") and on_table:
+		position = mark.position
+		$Craft.show()
+	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
+		$Craft.hide()
+	AssembleWeapon()
+		
+func FollowMouse():
+	position = get_global_mouse_position()
+
+
+func _on_area_2d_area_entered(area):
+	if area.name == \"Table\":
+		on_table = true
+		print(\"foi\")
+	else:
+		on_table = false
+
+
+func _on_area_2d_area_exited(area):
+	if area.name == \"Table\":
+		on_table = false
+
+
+
+func AssembleWeapon():
+	match weapon_estate:
+		0:
+			get_node(\"Icon\").show()
+			
+		1:
+			get_node(\"Icon\").hide()	
+			get_node(\"Icon2\").show()
+		2:
+			get_node(\"Icon2\").hide()
+			get_node(\"Icon3\").show()
+			get_node(\"Bainha\").show()
+		3:
+			get_node(\"Icon3\").hide()
+			get_node(\"Bainha\").hide()
+			get_node(\"Icon4\").show()	
+		4:
+			get_node(\"Icon4\").hide()	
+			get_node(\"Icon5\").show()
+			
+			$Craft.hide()
+			Input.set_custom_mouse_cursor(cursor, 
+				Input.CURSOR_ARROW, Vector2(16, 16))
+
+
+func _on_craft_pressed():
+	if weapon_estate <=3:
+		weapon_estate +=1
+
+
+
+func _on_area_2d_mouse_entered():
+	selected = true
+
+
+func _on_area_2d_mouse_exited():
+	selected = false
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(1141, 153)
@@ -20,9 +191,55 @@ y_sort_enabled = true
 offset_right = 1158.0
 offset_bottom = 656.0
 
-[node name="Weapon" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+[node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
 position = Vector2(249, 534)
 mark = NodePath("../Marker2D")
+
+[node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+position = Vector2(836, 542)
+script = SubResource("GDScript_kxox1")
+mark = NodePath("../Marker2D")
+
+[node name="Icon" parent="CanvasGroup/Mace" index="0"]
+texture = ExtResource("4_3gv1x")
+
+[node name="Icon2" parent="CanvasGroup/Mace" index="1"]
+texture = ExtResource("5_eew8u")
+
+[node name="Icon3" parent="CanvasGroup/Mace" index="2"]
+texture = ExtResource("5_eew8u")
+
+[node name="Icon4" parent="CanvasGroup/Mace" index="3"]
+texture = ExtResource("6_ri0c1")
+
+[node name="Icon5" parent="CanvasGroup/Mace" index="4"]
+texture = ExtResource("7_mefm3")
+
+[node name="Bainha" parent="CanvasGroup/Mace" index="5"]
+texture = ExtResource("8_87mye")
+
+[node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+position = Vector2(519, 534)
+script = SubResource("GDScript_nn7fl")
+mark = NodePath("../Marker2D")
+
+[node name="Icon" parent="CanvasGroup/Axe" index="0"]
+texture = ExtResource("9_b26sh")
+
+[node name="Icon2" parent="CanvasGroup/Axe" index="1"]
+texture = ExtResource("10_ntx0p")
+
+[node name="Icon3" parent="CanvasGroup/Axe" index="2"]
+texture = ExtResource("10_ntx0p")
+
+[node name="Icon4" parent="CanvasGroup/Axe" index="3"]
+texture = ExtResource("11_gqbx6")
+
+[node name="Icon5" parent="CanvasGroup/Axe" index="4"]
+texture = ExtResource("12_rwkau")
+
+[node name="Bainha" parent="CanvasGroup/Axe" index="5"]
+texture = ExtResource("13_l0dxl")
 
 [node name="Table" type="Node2D" parent="CanvasGroup"]
 position = Vector2(-13, -142)
@@ -44,3 +261,21 @@ position = Vector2(571, 314)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 324)
 scale = Vector2(-214.752, 256.389)
+
+[node name="Hammer" type="Button" parent="."]
+offset_left = 852.0
+offset_top = 298.0
+offset_right = 892.0
+offset_bottom = 338.0
+icon = ExtResource("5_xfbyw")
+flat = true
+
+[node name="MarteloF" type="Sprite2D" parent="Hammer"]
+position = Vector2(16, 16)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xfbyw")
+
+[connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]
+
+[editable path="CanvasGroup/Mace"]
+[editable path="CanvasGroup/Axe"]
