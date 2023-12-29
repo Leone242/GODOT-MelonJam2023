@@ -66,6 +66,6 @@ func AssembleWeapon():
 
 
 func _on_craft_pressed():
-	if weapon_estate <=4:
+	if weapon_estate <=3:
 		weapon_estate +=1
 
