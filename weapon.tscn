@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsqnjxw0f1l8t"]
+[gd_scene load_steps=8 format=3 uid="uid://bsqnjxw0f1l8t"]
 
 [ext_resource type="Script" path="res://Weapon.gd" id="1_fxxxo"]
 [ext_resource type="Texture2D" uid="uid://ds2tdjqmx57t" path="res://sprites/espadas/SemiEspadaB.png" id="2_fma6v"]
 [ext_resource type="Texture2D" uid="uid://dfyrtkil0na5" path="res://sprites/espadas/EspadaB.png" id="3_ruk4b"]
-[ext_resource type="Texture2D" uid="uid://cchbuyl8vgvsw" path="res://sprites/espadas/EspadaF.png" id="4_dl20y"]
+[ext_resource type="Texture2D" uid="uid://babt5e3s6quan" path="res://sprites/espadas/EspadaCompletaB.png" id="4_oiurk"]
+[ext_resource type="Texture2D" uid="uid://ck6n5h7r6u1oj" path="res://sprites/espadas/EspadaCompletaF.png" id="5_k5jad"]
+[ext_resource type="Texture2D" uid="uid://bxvxgcpuvxves" path="res://sprites/espadas/Bainha.png" id="6_s0weo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tmxm"]
 size = Vector2(161, 107)
@@ -18,7 +20,7 @@ texture = ExtResource("2_fma6v")
 [node name="Icon2" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
-texture = ExtResource("2_fma6v")
+texture = ExtResource("3_ruk4b")
 
 [node name="Icon3" type="Sprite2D" parent="."]
 visible = false
@@ -28,12 +30,19 @@ texture = ExtResource("3_ruk4b")
 [node name="Icon4" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
-texture = ExtResource("4_dl20y")
+texture = ExtResource("4_oiurk")
 
 [node name="Icon5" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
-texture = ExtResource("4_dl20y")
+texture = ExtResource("5_k5jad")
+
+[node name="Bainha" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-20, -8)
+scale = Vector2(10, 10)
+texture = ExtResource("6_s0weo")
+flip_h = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -47,12 +56,14 @@ offset_left = -99.0
 offset_top = -78.0
 offset_right = 92.0
 offset_bottom = 76.0
+focus_mode = 0
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+flat = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

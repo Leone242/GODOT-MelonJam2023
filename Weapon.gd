@@ -48,20 +48,24 @@ func AssembleWeapon():
 			get_node("Icon").show()
 			
 		1:
-			get_node("Icon2").show()
 			get_node("Icon").hide()	
+			get_node("Icon2").show()
 		2:
-			get_node("Icon3").show()
 			get_node("Icon2").hide()
+			get_node("Icon3").show()
+			get_node("Bainha").show()
 		3:
-			get_node("Icon4").show()
-			get_node("Icon3").hide()	
+			get_node("Icon3").hide()
+			get_node("Bainha").hide()
+			get_node("Icon4").show()	
 		4:
-			get_node("Icon5").show()
 			get_node("Icon4").hide()	
+			get_node("Icon5").show()
+			
 			$Craft.hide()
 
+
 func _on_craft_pressed():
-	if weapon_estate <=3:
+	if weapon_estate <=4:
 		weapon_estate +=1
 
