@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddui4ns6eaem2"]
+
+[ext_resource type="Texture2D" uid="uid://rl1uyek3lgyn" path="res://sprites/machados/SemiMachadoB.png" id="1_xrl04"]
+[ext_resource type="Script" path="res://machado.gd" id="1_y04tc"]
+[ext_resource type="Texture2D" uid="uid://b6g5ojlo4xy0k" path="res://sprites/machados/MachadoB.png" id="2_6t1m5"]
+[ext_resource type="Texture2D" uid="uid://is2m32fkichj" path="res://sprites/machados/bainha.png" id="3_3gt3i"]
+[ext_resource type="Texture2D" uid="uid://c6lcfqnokcg48" path="res://sprites/machados/MachadoCompletoB.png" id="4_4jjj3"]
+[ext_resource type="Texture2D" uid="uid://sf71p0qnov1x" path="res://sprites/machados/MachadoCompletoA.png" id="5_3pmpj"]
+[ext_resource type="Texture2D" uid="uid://ctf5geubfxuhg" path="res://sprites/machados/MachadoCompletoF.png" id="6_k8sn5"]
+[ext_resource type="Texture2D" uid="uid://dpnqdd5omjkyd" path="res://sprites/machados/MachadoCompletoT.png" id="7_0jn02"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcr5q"]
+radius = 70.8308
+
+[node name="Machado" type="Node2D"]
+script = ExtResource("1_y04tc")
+
+[node name="BaseMachado" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("1_xrl04")
+
+[node name="Moldado" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("2_6t1m5")
+
+[node name="Cabo" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-49, 42)
+scale = Vector2(10, 10)
+texture = ExtResource("3_3gt3i")
+flip_h = true
+
+[node name="Completo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_4jjj3")
+
+[node name="CompletoAgua" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("5_3pmpj")
+
+[node name="CompletoFogo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("6_k8sn5")
+
+[node name="CompletoTerra" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("7_0jn02")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_dcr5q")
+
+[node name="Craft" type="Button" parent="."]
+visible = false
+offset_left = -52.0
+offset_top = -50.0
+offset_right = 53.0
+offset_bottom = 52.0
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="Craft" to="." method="_on_craft_pressed"]

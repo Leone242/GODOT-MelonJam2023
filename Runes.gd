@@ -12,3 +12,7 @@ func _on_earth_pressed():
 
 func _on_fire_pressed():
 	rune_name = "Fire"
+
+
+func _on_finish_pressed():
+	rune_name = ""

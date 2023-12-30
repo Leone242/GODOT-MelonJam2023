@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dshcr6qmwdalp"]
+
+[ext_resource type="Texture2D" uid="uid://si7b7uqnusod" path="res://sprites/bilhetes/EspadaAgua.png" id="1_cq07d"]
+[ext_resource type="Texture2D" uid="uid://clk1qr6feuvdr" path="res://sprites/bilhetes/EspadaFogo.png" id="2_4oquk"]
+[ext_resource type="Texture2D" uid="uid://d5k0643qeeck" path="res://sprites/bilhetes/EspadaTerra.png" id="3_mjlgk"]
+[ext_resource type="Texture2D" uid="uid://c5hgdjjsbfknq" path="res://sprites/bilhetes/MachadoAgua.png" id="4_5mmxi"]
+[ext_resource type="Texture2D" uid="uid://ctibrojtvchep" path="res://sprites/bilhetes/MachadoFogo.png" id="5_3tb7g"]
+[ext_resource type="Texture2D" uid="uid://kwv4uxu0v66i" path="res://sprites/bilhetes/MachadoTerra.png" id="6_pmnvy"]
+[ext_resource type="Texture2D" uid="uid://136dtj8sl5kg" path="res://sprites/bilhetes/MaçaAgua.png" id="7_h2dpp"]
+[ext_resource type="Texture2D" uid="uid://b5b0tdpkpvo7m" path="res://sprites/bilhetes/MaçaFogo.png" id="8_tura6"]
+[ext_resource type="Texture2D" uid="uid://bkmcs6rbdfpai" path="res://sprites/bilhetes/MaçaTerra.png" id="9_vax5x"]
+
+[node name="Pedidos" type="Node2D"]
+
+[node name="EspadaAgua" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("1_cq07d")
+
+[node name="EspadaFogo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("2_4oquk")
+
+[node name="EspadaTerra" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("3_mjlgk")
+
+[node name="MachadoAgua" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_5mmxi")
+
+[node name="MachadoFogo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("5_3tb7g")
+
+[node name="MachadoTerra" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("6_pmnvy")
+
+[node name="MaçaAgua" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("7_h2dpp")
+
+[node name="MaçaFogo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("8_tura6")
+
+[node name="MaçaTerra" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("9_vax5x")
