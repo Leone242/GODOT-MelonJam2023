@@ -4,7 +4,9 @@ var selected = false
 var weapon_estate = 0
 var on_table = false
 @export var mark: Marker2D
-
+var rune_name: String
+@export var rune: Node2D
+var set_rune = false
 
 func _ready():
 	pass
@@ -23,17 +25,21 @@ func FollowMouse():
 	position = get_global_mouse_position()
 
 
+
 func _on_area_2d_area_entered(area):
 	if area.name == "Table":
 		on_table = true
+		set_rune = true
 		print("foi")
 	else:
 		on_table = false
+		set_rune = false
 
 
 func _on_area_2d_area_exited(area):
 	if area.name == "Table":
 		on_table = false
+		set_rune = false
 
 
 
@@ -55,6 +61,19 @@ func AssembleWeapon():
 			get_node("Icon4").show()	
 			
 			$Craft.hide()
+	if on_table and set_rune:
+		DefineRune()
+
+func DefineRune():
+	rune_name = rune.rune_name
+	match rune_name:
+		"Fire":
+			get_node("Icon5F").show()
+		"Water":
+			get_node("Icon5W").show()
+		"Earth":
+			get_node("Icon5E").show()	
+	
 
 
 func _on_craft_pressed():
@@ -69,3 +88,5 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	selected = false
+
+

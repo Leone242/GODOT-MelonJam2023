@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://buyhu3sjm0t4u" path="res://sprites/espadas/EspadaCompletaA.png" id="6_v7pod"]
 [ext_resource type="Texture2D" uid="uid://banr1chh0l1es" path="res://sprites/espadas/EspadaCompletaT.png" id="7_y5pic"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tmxm"]
-size = Vector2(161, 107)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q67hf"]
+radius = 46.5
+height = 93.0
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_fxxxo")
@@ -60,7 +61,7 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, 4.5)
-shape = SubResource("RectangleShape2D_4tmxm")
+shape = SubResource("CapsuleShape2D_q67hf")
 
 [node name="Craft" type="Button" parent="."]
 visible = false

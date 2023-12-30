@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=30 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
@@ -25,183 +25,224 @@
 [ext_resource type="Texture2D" uid="uid://cjcsqnkenhurb" path="res://sprites/charms/CharmAmor.png" id="19_8vwco"]
 [ext_resource type="Texture2D" uid="uid://cs327mx8lpwo2" path="res://sprites/charms/CharmForça.png" id="20_b1nxy"]
 [ext_resource type="Texture2D" uid="uid://cdds7idgvsm8q" path="res://sprites/charms/CharmSorte.png" id="21_4vpdo"]
-
-[sub_resource type="GDScript" id="GDScript_kxox1"]
-script/source = "extends Node2D
-
-var selected = false
-var weapon_estate = 0
-var on_table = false
-@export var mark: Marker2D
-
-
-func _ready():
-	pass
-	
-func _process(delta):
-	if Input.is_action_pressed(\"mouse_select\") and selected:
-		FollowMouse()
-	elif Input.is_action_just_released(\"mouse_select\") and on_table:
-		position = mark.position
-		$Craft.show()
-	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
-		$Craft.hide()
-	AssembleWeapon()
-		
-func FollowMouse():
-	position = get_global_mouse_position()
-
-
-func _on_area_2d_area_entered(area):
-	if area.name == \"Table\":
-		on_table = true
-		print(\"foi\")
-	else:
-		on_table = false
-
-
-func _on_area_2d_area_exited(area):
-	if area.name == \"Table\":
-		on_table = false
-
-
-
-func AssembleWeapon():
-	match weapon_estate:
-		0:
-			get_node(\"Icon\").show()
-			
-		1:
-			get_node(\"Icon\").hide()	
-			get_node(\"Icon2\").show()
-		2:
-			get_node(\"Icon2\").hide()
-			get_node(\"Icon3\").show()
-			get_node(\"Bainha\").show()
-		3:
-			get_node(\"Icon3\").hide()
-			get_node(\"Bainha\").hide()
-			get_node(\"Icon4\").show()	
-		4:
-			get_node(\"Icon4\").hide()	
-			get_node(\"Icon5\").show()
-			
-			$Craft.hide()
-			
-
-
-func _on_craft_pressed():
-	if weapon_estate <=3:
-		weapon_estate +=1
-
-
-
-func _on_area_2d_mouse_entered():
-	selected = true
-
-
-func _on_area_2d_mouse_exited():
-	selected = false
-"
-
-[sub_resource type="GDScript" id="GDScript_nn7fl"]
-script/source = "extends Node2D
-
-var selected = false
-var weapon_estate = 0
-var on_table = false
-@export var mark: Marker2D
-
-
-
-func _ready():
-	pass
-	
-func _process(delta):
-	if Input.is_action_pressed(\"mouse_select\") and selected:
-		FollowMouse()
-	elif Input.is_action_just_released(\"mouse_select\") and on_table:
-		position = mark.position
-		$Craft.show()
-	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
-		$Craft.hide()
-	AssembleWeapon()
-		
-func FollowMouse():
-	position = get_global_mouse_position()
-
-
-func _on_area_2d_area_entered(area):
-	if area.name == \"Table\":
-		on_table = true
-		print(\"foi\")
-	else:
-		on_table = false
-
-
-func _on_area_2d_area_exited(area):
-	if area.name == \"Table\":
-		on_table = false
-
-
-
-func AssembleWeapon():
-	match weapon_estate:
-		0:
-			get_node(\"Icon\").show()
-			
-		1:
-			get_node(\"Icon\").hide()	
-			get_node(\"Icon2\").show()
-		2:
-			get_node(\"Icon2\").hide()
-			get_node(\"Icon3\").show()
-			get_node(\"Bainha\").show()
-		3:
-			get_node(\"Icon3\").hide()
-			get_node(\"Bainha\").hide()
-			get_node(\"Icon4\").show()	
-		4:
-			get_node(\"Icon4\").hide()	
-			get_node(\"Icon5\").show()
-			
-			$Craft.hide()
-			
-
-
-func _on_craft_pressed():
-	if weapon_estate <=3:
-		weapon_estate +=1
-
-
-
-func _on_area_2d_mouse_entered():
-	selected = true
-
-
-func _on_area_2d_mouse_exited():
-	selected = false
-"
+[ext_resource type="Script" path="res://Runes.gd" id="26_c8kgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(702, 277)
+
+[sub_resource type="GDScript" id="GDScript_lhwfe"]
+script/source = "extends Node2D
+
+var selected = false
+var weapon_estate = 0
+var on_table = false
+@export var mark: Marker2D
+var rune_name: String
+@export var rune: Node2D
+var set_rune = false
+
+func _ready():
+	pass
+	
+func _process(delta):
+	if Input.is_action_pressed(\"mouse_select\") and selected:
+		FollowMouse()
+	elif Input.is_action_just_released(\"mouse_select\") and on_table:
+		position = mark.position
+		$Craft.show()
+	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
+		$Craft.hide()
+	AssembleWeapon()
+		
+func FollowMouse():
+	position = get_global_mouse_position()
+
+
+func _on_area_2d_area_entered(area):
+	if area.name == \"Table\":
+		on_table = true
+		set_rune = true
+		print(\"foi\")
+	else:
+		on_table = false
+		set_rune = false
+
+
+func _on_area_2d_area_exited(area):
+	if area.name == \"Table\":
+		on_table = false
+		set_rune = false
+
+
+
+func AssembleWeapon():
+	match weapon_estate:
+		0:
+			get_node(\"Icon\").show()
+			
+		1:
+			get_node(\"Icon\").hide()	
+			get_node(\"Icon2\").show()
+		2:
+			get_node(\"Icon2\").hide()
+			get_node(\"Icon3\").show()
+			get_node(\"Bainha\").show()
+		3:
+			get_node(\"Icon3\").hide()
+			get_node(\"Bainha\").hide()
+			get_node(\"Icon4\").show()	
+			
+			$Craft.hide()
+	if on_table and set_rune:
+		DefineRune()
+
+	
+func DefineRune():
+	rune_name = rune.rune_name
+	match rune_name:
+		\"Fire\":
+			get_node(\"Icon5F\").show()
+		\"Water\":
+			get_node(\"Icon5W\").show()
+		\"Earth\":
+			get_node(\"Icon5E\").show()		
+
+
+func _on_craft_pressed():
+	if weapon_estate <=2:
+		weapon_estate +=1
+
+
+
+func _on_area_2d_mouse_entered():
+	selected = true
+
+
+func _on_area_2d_mouse_exited():
+	selected = false
+
+"
+
+[sub_resource type="GDScript" id="GDScript_gbwv2"]
+script/source = "extends Node2D
+
+var selected = false
+var weapon_estate = 0
+var on_table = false
+@export var mark: Marker2D
+var rune_name: String
+@export var rune: Node2D
+var set_rune = false
+
+func _ready():
+	pass
+	
+func _process(delta):
+	if Input.is_action_pressed(\"mouse_select\") and selected:
+		FollowMouse()
+	elif Input.is_action_just_released(\"mouse_select\") and on_table:
+		position = mark.position
+		$Craft.show()
+	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
+		$Craft.hide()
+	AssembleWeapon()
+		
+func FollowMouse():
+	position = get_global_mouse_position()
+
+
+func _on_area_2d_area_entered(area):
+	if area.name == \"Table\":
+		on_table = true
+		set_rune = true
+		print(\"foi\")
+	else:
+		on_table = false
+		set_rune = false
+
+func _on_area_2d_area_exited(area):
+	if area.name == \"Table\":
+		on_table = false
+		set_rune = false
+
+
+
+func AssembleWeapon():
+	match weapon_estate:
+		0:
+			get_node(\"Icon\").show()
+			
+		1:
+			get_node(\"Icon\").hide()	
+			get_node(\"Icon2\").show()
+		2:
+			get_node(\"Icon2\").hide()
+			get_node(\"Icon3\").show()
+			get_node(\"Bainha\").show()
+		3:
+			get_node(\"Icon3\").hide()
+			get_node(\"Bainha\").hide()
+			get_node(\"Icon4\").show()	
+			
+			$Craft.hide()
+	if on_table and set_rune:
+		DefineRune()
+
+func DefineRune():
+	rune_name = rune.rune_name
+	match rune_name:
+		\"Fire\":
+			get_node(\"Icon5F\").show()
+		\"Water\":
+			get_node(\"Icon5W\").show()
+		\"Earth\":
+			get_node(\"Icon5E\").show()		
+
+
+
+func _on_craft_pressed():
+	if weapon_estate <=2:
+		weapon_estate +=1
+
+
+
+func _on_area_2d_mouse_entered():
+	selected = true
+
+
+func _on_area_2d_mouse_exited():
+	selected = false
+
+
+"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qh5jr")
 
 [node name="Cursor" parent="." instance=ExtResource("2_xgn82")]
 
+[node name="Table" type="Node2D" parent="."]
+position = Vector2(-13, -142)
+
+[node name="Table" type="Area2D" parent="Table"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Table"]
+position = Vector2(568, 498.5)
+shape = SubResource("RectangleShape2D_ydqo5")
+
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 y_sort_enabled = true
 
-[node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+[node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
 position = Vector2(563, 92)
 mark = NodePath("../Marker2D")
+rune = NodePath("../../Runes")
 
-[node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+[node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
 position = Vector2(831, 102)
-script = SubResource("GDScript_kxox1")
+script = SubResource("GDScript_lhwfe")
 mark = NodePath("../Marker2D")
+rune = NodePath("../../Runes")
 
 [node name="Icon" parent="CanvasGroup/Mace" index="0"]
 texture = ExtResource("4_3gv1x")
@@ -227,10 +268,11 @@ texture = ExtResource("9_24p4o")
 [node name="Bainha" parent="CanvasGroup/Mace" index="7"]
 texture = ExtResource("8_87mye")
 
-[node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
+[node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
 position = Vector2(696, 86)
-script = SubResource("GDScript_nn7fl")
+script = SubResource("GDScript_gbwv2")
 mark = NodePath("../Marker2D")
+rune = NodePath("../../Runes")
 
 [node name="Icon" parent="CanvasGroup/Axe" index="0"]
 texture = ExtResource("9_b26sh")
@@ -255,15 +297,6 @@ texture = ExtResource("16_lokdk")
 
 [node name="Bainha" parent="CanvasGroup/Axe" index="7"]
 texture = ExtResource("13_l0dxl")
-
-[node name="Table" type="Node2D" parent="CanvasGroup"]
-position = Vector2(-13, -142)
-
-[node name="Table" type="Area2D" parent="CanvasGroup/Table"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Table/Table"]
-position = Vector2(568, 498.5)
-shape = SubResource("RectangleShape2D_ydqo5")
 
 [node name="Marker2D" type="Marker2D" parent="CanvasGroup"]
 position = Vector2(556, 336)
@@ -383,8 +416,32 @@ position = Vector2(86, 448)
 scale = Vector2(2, 2)
 texture = ExtResource("21_4vpdo")
 
-[connection signal="mouse_exited" from="CanvasGroup/Table/Table" to="Cursor" method="_on_table_mouse_exited"]
+[node name="Runes" type="Node2D" parent="."]
+script = ExtResource("26_c8kgm")
+
+[node name="Water" type="Button" parent="Runes"]
+offset_left = 62.0
+offset_top = 270.0
+offset_right = 97.0
+offset_bottom = 312.0
+
+[node name="Earth" type="Button" parent="Runes"]
+offset_left = 94.0
+offset_top = 232.0
+offset_right = 132.0
+offset_bottom = 267.0
+
+[node name="Fire" type="Button" parent="Runes"]
+offset_left = 107.0
+offset_top = 272.0
+offset_right = 144.0
+offset_bottom = 311.0
+
+[connection signal="mouse_exited" from="Table/Table" to="Cursor" method="_on_table_mouse_exited"]
 [connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]
+[connection signal="pressed" from="Runes/Water" to="Runes" method="_on_water_pressed"]
+[connection signal="pressed" from="Runes/Earth" to="Runes" method="_on_earth_pressed"]
+[connection signal="pressed" from="Runes/Fire" to="Runes" method="_on_fire_pressed"]
 
 [editable path="CanvasGroup/Mace"]
 [editable path="CanvasGroup/Axe"]
