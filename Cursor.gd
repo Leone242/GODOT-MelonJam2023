@@ -22,12 +22,12 @@ func _process(delta):
 		
 	if pressed:
 		print("pressed")
-		Input.set_custom_mouse_cursor(cursorH, Input.CURSOR_ARROW, Vector2(16, 16))
+		Input.set_custom_mouse_cursor(cursorH, Input.CURSOR_ARROW, Vector2(32, 28))
 	elif !pressed:
-		Input.set_custom_mouse_cursor(cursorA, Input.CURSOR_ARROW, Vector2(16, 16))
+		Input.set_custom_mouse_cursor(cursorA, Input.CURSOR_ARROW, Vector2(46, 0))
 
 		if Input.is_action_pressed("mouse_select"):
-			Input.set_custom_mouse_cursor(cursorF, Input.CURSOR_ARROW)
+			Input.set_custom_mouse_cursor(cursorF, Input.CURSOR_ARROW, Vector2(46, 0))
 
 func _on_hammer_pressed():
 	print("ei")
