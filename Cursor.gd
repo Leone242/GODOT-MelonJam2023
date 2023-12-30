@@ -10,7 +10,7 @@ var pressed = false
 
 
 func _ready():
-	Input.set_custom_mouse_cursor(cursorA, Input.CURSOR_ARROW, Vector2(16, 16))
+	Input.set_custom_mouse_cursor(cursorA, Input.CURSOR_ARROW)
 
 func _process(delta):
 #	elif pressed:
@@ -27,7 +27,7 @@ func _process(delta):
 		Input.set_custom_mouse_cursor(cursorA, Input.CURSOR_ARROW, Vector2(16, 16))
 
 		if Input.is_action_pressed("mouse_select"):
-			Input.set_custom_mouse_cursor(cursorF, Input.CURSOR_ARROW, Vector2(16, 16))
+			Input.set_custom_mouse_cursor(cursorF, Input.CURSOR_ARROW)
 
 func _on_hammer_pressed():
 	print("ei")
