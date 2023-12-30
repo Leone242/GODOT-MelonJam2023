@@ -1,9 +1,8 @@
-res://weapon.tscn
 res://main.tscn
+res://Cursor.gd
+res://weapon.tscn
 res://menu.tscn
 res://sprites/cursores/cursor.tscn
 res://rune.tscn
 res://pedidos.tscn
 res://machado.tscn
-res://machado.gd
-res://Runes.gd
