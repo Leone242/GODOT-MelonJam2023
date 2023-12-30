@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1703902409
+::res://::1703902725
 Cursor.gd::GDScript::-1::1703894731::0::1::::<>Node2D<>::
 icon.svg::CompressedTexture2D::7556604339722333767::1703795019::1703795019::1::::<><>::
 main.gd::GDScript::-1::1703894731::0::1::::<>Node2D<>::
@@ -7,7 +7,7 @@ main.tscn::PackedScene::8638479659824938701::1703902346::0::1::::<><>::uid://bsq
 menu.gd::GDScript::-1::1703795019::0::1::::<>Node2D<>::
 menu.tscn::PackedScene::1100685719368788089::1703902346::0::1::::<><>::res://menu.gd
 rune.tscn::PackedScene::1945134689355540657::1703902308::0::1::::<><>::uid://d03j75c5rbxyg
-Weapon.gd::GDScript::-1::1703894731::0::1::::<>Node2D<>::
+Weapon.gd::GDScript::-1::1703902725::0::1::::<>Node2D<>::
 weapon.tscn::PackedScene::3683656549460101985::1703902346::0::1::::<><>::res://Weapon.gd<>uid://ds2tdjqmx57t::::res://sprites/espadas/SemiEspadaB.png<>uid://dfyrtkil0na5::::res://sprites/espadas/EspadaB.png<>uid://babt5e3s6quan::::res://sprites/espadas/EspadaCompletaB.png<>uid://ck6n5h7r6u1oj::::res://sprites/espadas/EspadaCompletaF.png<>uid://bxvxgcpuvxves::::res://sprites/espadas/Bainha.png
 ::res://sprites/::1703902288
 ::res://sprites/bilhetes/::1703902295
@@ -76,5 +76,6 @@ SemiMaçaT.png::CompressedTexture2D::9102562922552614161::1703812982::1703812982
 runasA.png::CompressedTexture2D::8972390897659601642::1703894880::1703894880::1::::<><>::
 runasF.png::CompressedTexture2D::3192281439793558678::1703894880::1703894880::1::::<><>::
 runasT.png::CompressedTexture2D::2901771743707626302::1703894880::1703894880::1::::<><>::
-::res://sprites/UI/::1703900094
+::res://sprites/UI/::1703903500
 Background.png::CompressedTexture2D::7335767711604343529::1703900093::1703900094::1::::<><>::
+Moeda.png::CompressedTexture2D::6369852760445869292::1703903500::1703903500::1::::<><>::
