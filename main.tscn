@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=37 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://ddui4ns6eaem2" path="res://machado.tscn" id="29_tsdor"]
 [ext_resource type="Texture2D" uid="uid://qjhbe1qshk71" path="res://sprites/UI/Botão.png" id="30_bcr7y"]
 [ext_resource type="PackedScene" uid="uid://c0r7shauoi2ko" path="res://maça.tscn" id="31_pfk3j"]
+[ext_resource type="Texture2D" uid="uid://cw0usrh37h013" path="res://sprites/UI/Moeda.png" id="33_qls7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(702, 277)
@@ -463,10 +464,11 @@ scale = Vector2(10, 10)
 texture = ExtResource("4_3gv1x")
 
 [node name="Finish" type="Button" parent="."]
-offset_left = 254.0
-offset_top = 57.0
-offset_right = 371.0
-offset_bottom = 118.0
+visible = false
+offset_left = 1003.0
+offset_top = 591.0
+offset_right = 1120.0
+offset_bottom = 652.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 38
 text = "Finish"
@@ -500,11 +502,26 @@ position = Vector2(699, 89)
 mark = NodePath("../CanvasGroup/Marker2D")
 rune = NodePath("../Runes")
 
+[node name="Moeda" type="Sprite2D" parent="."]
+position = Vector2(96, 78)
+scale = Vector2(2, 2)
+texture = ExtResource("33_qls7h")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 133.0
+offset_top = 52.0
+offset_right = 217.0
+offset_bottom = 106.0
+theme_override_font_sizes/font_size = 37
+text = "000"
+
+[connection signal="area_exited" from="Table/Table" to="." method="_on_table_area_exited"]
 [connection signal="mouse_exited" from="Table/Table" to="Cursor" method="_on_table_mouse_exited"]
 [connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]
 [connection signal="pressed" from="Runes/Water" to="Runes" method="_on_water_pressed"]
 [connection signal="pressed" from="Runes/Earth" to="Runes" method="_on_earth_pressed"]
 [connection signal="pressed" from="Runes/Fire" to="Runes" method="_on_fire_pressed"]
+[connection signal="pressed" from="Finish" to="." method="_on_finish_pressed"]
 [connection signal="pressed" from="Finish" to="Runes" method="_on_finish_pressed"]
 [connection signal="pressed" from="Finish" to="Pedidos" method="_on_finish_pressed"]
 

@@ -1,5 +1,6 @@
-res://weapon.tscn
 res://main.tscn
+res://main.gd
+res://weapon.tscn
 res://menu.tscn
 res://sprites/cursores/cursor.tscn
 res://rune.tscn
@@ -7,4 +8,4 @@ res://pedidos.tscn
 res://machado.tscn
 res://maça.tscn
 res://espada.tscn
-res://Cursor.gd
+res://Weapon.gd
