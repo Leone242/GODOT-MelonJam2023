@@ -46,17 +46,17 @@ func _on_area_2d_area_exited(area):
 func AssembleWeapon():
 	match weapon_estate:
 		0:
-			get_node("BaseMachado").show()
+			get_node("EspadaBase").show()
 			
 		1:
-			get_node("BaseMachado").hide()	
-			get_node("Moldado").show()
+			get_node("EspadaBase").hide()	
+			get_node("Moldada").show()
 		2:
-			get_node("Cabo").show()
+			get_node("Empunhadura").show()
 		3:
-			get_node("Cabo").hide()
-			get_node("Moldado").hide()
-			get_node("Completo").show()
+			get_node("Empunhadura").hide()
+			get_node("Moldada").hide()
+			get_node("Completa").show()
 	
 			
 			$Craft.hide()
@@ -67,11 +67,11 @@ func DefineRune():
 	rune_name = rune.rune_name
 	match rune_name:
 		"Fire":
-			get_node("CompletoFogo").show()
+			get_node("CompletaFogo").show()
 		"Water":
-			get_node("CompletoAgua").show()
+			get_node("CompletaAgua").show()
 		"Earth":
-			get_node("CompletoTerra").show()	
+			get_node("CompletaTerra").show()	
 	
 
 
@@ -87,5 +87,3 @@ func _on_area_2d_mouse_entered():
 
 func _on_area_2d_mouse_exited():
 	selected = false
-
-

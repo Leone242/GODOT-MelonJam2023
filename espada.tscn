@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://coiawkh1xe0wk"]
+
+[ext_resource type="Script" path="res://Espada.gd" id="1_sn5mh"]
+[ext_resource type="Texture2D" uid="uid://ds2tdjqmx57t" path="res://sprites/espadas/SemiEspadaB.png" id="2_chxxt"]
+[ext_resource type="Texture2D" uid="uid://dfyrtkil0na5" path="res://sprites/espadas/EspadaB.png" id="3_owx26"]
+[ext_resource type="Texture2D" uid="uid://babt5e3s6quan" path="res://sprites/espadas/EspadaCompletaB.png" id="4_wksb3"]
+[ext_resource type="Texture2D" uid="uid://bxvxgcpuvxves" path="res://sprites/espadas/Bainha.png" id="5_h1gv1"]
+[ext_resource type="Texture2D" uid="uid://buyhu3sjm0t4u" path="res://sprites/espadas/EspadaCompletaA.png" id="6_ye6ib"]
+[ext_resource type="Texture2D" uid="uid://banr1chh0l1es" path="res://sprites/espadas/EspadaCompletaT.png" id="7_k0n4i"]
+[ext_resource type="Texture2D" uid="uid://ck6n5h7r6u1oj" path="res://sprites/espadas/EspadaCompletaF.png" id="8_rux60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4y0li"]
+radius = 53.0377
+
+[node name="Espada" type="Node2D"]
+script = ExtResource("1_sn5mh")
+
+[node name="EspadaBase" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("2_chxxt")
+
+[node name="Moldada" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("3_owx26")
+
+[node name="Completa" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("4_wksb3")
+
+[node name="Empunhadura" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-25, -24)
+scale = Vector2(10, 10)
+texture = ExtResource("5_h1gv1")
+flip_h = true
+
+[node name="CompletaAgua" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("6_ye6ib")
+
+[node name="CompletaTerra" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("7_k0n4i")
+
+[node name="CompletaFogo" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("8_rux60")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4y0li")
+
+[node name="Craft" type="Button" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="pressed" from="Craft" to="." method="_on_craft_pressed"]

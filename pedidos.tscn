@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dshcr6qmwdalp"]
+[gd_scene load_steps=11 format=3 uid="uid://dshcr6qmwdalp"]
 
+[ext_resource type="Script" path="res://pedidos.gd" id="1_0qvd0"]
 [ext_resource type="Texture2D" uid="uid://si7b7uqnusod" path="res://sprites/bilhetes/EspadaAgua.png" id="1_cq07d"]
 [ext_resource type="Texture2D" uid="uid://clk1qr6feuvdr" path="res://sprites/bilhetes/EspadaFogo.png" id="2_4oquk"]
 [ext_resource type="Texture2D" uid="uid://d5k0643qeeck" path="res://sprites/bilhetes/EspadaTerra.png" id="3_mjlgk"]
@@ -11,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bkmcs6rbdfpai" path="res://sprites/bilhetes/MaçaTerra.png" id="9_vax5x"]
 
 [node name="Pedidos" type="Node2D"]
+script = ExtResource("1_0qvd0")
 
 [node name="EspadaAgua" type="Sprite2D" parent="."]
 visible = false

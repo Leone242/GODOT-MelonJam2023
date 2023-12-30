@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=36 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
@@ -28,8 +28,10 @@
 [ext_resource type="Script" path="res://Runes.gd" id="26_c8kgm"]
 [ext_resource type="PackedScene" uid="uid://dshcr6qmwdalp" path="res://pedidos.tscn" id="27_k7qbt"]
 [ext_resource type="Texture2D" uid="uid://ds2tdjqmx57t" path="res://sprites/espadas/SemiEspadaB.png" id="28_xanhp"]
+[ext_resource type="PackedScene" uid="uid://coiawkh1xe0wk" path="res://espada.tscn" id="29_05h6l"]
 [ext_resource type="PackedScene" uid="uid://ddui4ns6eaem2" path="res://machado.tscn" id="29_tsdor"]
 [ext_resource type="Texture2D" uid="uid://qjhbe1qshk71" path="res://sprites/UI/Botão.png" id="30_bcr7y"]
+[ext_resource type="PackedScene" uid="uid://c0r7shauoi2ko" path="res://maça.tscn" id="31_pfk3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(702, 277)
@@ -226,7 +228,7 @@ script = ExtResource("1_qh5jr")
 [node name="Cursor" parent="." instance=ExtResource("2_xgn82")]
 
 [node name="Table" type="Node2D" parent="."]
-position = Vector2(-13, -142)
+position = Vector2(-10, -153)
 
 [node name="Table" type="Area2D" parent="Table"]
 
@@ -442,8 +444,8 @@ offset_right = 144.0
 offset_bottom = 311.0
 
 [node name="Pedidos" parent="." instance=ExtResource("27_k7qbt")]
-visible = false
-position = Vector2(232, 92)
+top_level = true
+position = Vector2(118, 632)
 
 [node name="SemiEspadaB" type="Sprite2D" parent="."]
 position = Vector2(563, 92)
@@ -459,11 +461,6 @@ texture = ExtResource("9_b26sh")
 position = Vector2(833, 102)
 scale = Vector2(10, 10)
 texture = ExtResource("4_3gv1x")
-
-[node name="Machado" parent="." node_paths=PackedStringArray("mark", "rune") instance=ExtResource("29_tsdor")]
-position = Vector2(697, 96)
-mark = NodePath("../CanvasGroup/Marker2D")
-rune = NodePath("../Runes")
 
 [node name="Finish" type="Button" parent="."]
 offset_left = 254.0
@@ -482,12 +479,34 @@ position = Vector2(57, 32)
 scale = Vector2(5, 5)
 texture = ExtResource("30_bcr7y")
 
+[node name="Espada" parent="." node_paths=PackedStringArray("mark", "rune") instance=ExtResource("29_05h6l")]
+visible = false
+top_level = true
+position = Vector2(562, 92)
+mark = NodePath("../CanvasGroup/Marker2D")
+rune = NodePath("../Runes")
+
+[node name="Maça" parent="." node_paths=PackedStringArray("mark", "rune") instance=ExtResource("31_pfk3j")]
+visible = false
+top_level = true
+position = Vector2(835, 103)
+mark = NodePath("../CanvasGroup/Marker2D")
+rune = NodePath("../Runes")
+
+[node name="Machado" parent="." node_paths=PackedStringArray("mark", "rune") instance=ExtResource("29_tsdor")]
+visible = false
+top_level = true
+position = Vector2(699, 89)
+mark = NodePath("../CanvasGroup/Marker2D")
+rune = NodePath("../Runes")
+
 [connection signal="mouse_exited" from="Table/Table" to="Cursor" method="_on_table_mouse_exited"]
 [connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]
 [connection signal="pressed" from="Runes/Water" to="Runes" method="_on_water_pressed"]
 [connection signal="pressed" from="Runes/Earth" to="Runes" method="_on_earth_pressed"]
 [connection signal="pressed" from="Runes/Fire" to="Runes" method="_on_fire_pressed"]
 [connection signal="pressed" from="Finish" to="Runes" method="_on_finish_pressed"]
+[connection signal="pressed" from="Finish" to="Pedidos" method="_on_finish_pressed"]
 
 [editable path="CanvasGroup/Mace"]
 [editable path="CanvasGroup/Axe"]
