@@ -2,3 +2,5 @@ res://weapon.tscn
 res://main.tscn
 res://menu.tscn
 res://sprites/cursores/cursor.tscn
+res://rune.tscn
+res://Weapon.gd

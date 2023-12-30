@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsqnjxw0f1l8t"]
+[gd_scene load_steps=10 format=3 uid="uid://bsqnjxw0f1l8t"]
 
 [ext_resource type="Script" path="res://Weapon.gd" id="1_fxxxo"]
 [ext_resource type="Texture2D" uid="uid://ds2tdjqmx57t" path="res://sprites/espadas/SemiEspadaB.png" id="2_fma6v"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://babt5e3s6quan" path="res://sprites/espadas/EspadaCompletaB.png" id="4_oiurk"]
 [ext_resource type="Texture2D" uid="uid://ck6n5h7r6u1oj" path="res://sprites/espadas/EspadaCompletaF.png" id="5_k5jad"]
 [ext_resource type="Texture2D" uid="uid://bxvxgcpuvxves" path="res://sprites/espadas/Bainha.png" id="6_s0weo"]
+[ext_resource type="Texture2D" uid="uid://buyhu3sjm0t4u" path="res://sprites/espadas/EspadaCompletaA.png" id="6_v7pod"]
+[ext_resource type="Texture2D" uid="uid://banr1chh0l1es" path="res://sprites/espadas/EspadaCompletaT.png" id="7_y5pic"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4tmxm"]
 size = Vector2(161, 107)
@@ -32,10 +34,20 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("4_oiurk")
 
-[node name="Icon5" type="Sprite2D" parent="."]
+[node name="Icon5F" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("5_k5jad")
+
+[node name="Icon5W" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("6_v7pod")
+
+[node name="Icon5E" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(10, 10)
+texture = ExtResource("7_y5pic")
 
 [node name="Bainha" type="Sprite2D" parent="."]
 visible = false

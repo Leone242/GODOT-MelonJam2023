@@ -53,15 +53,12 @@ func AssembleWeapon():
 			get_node("Icon3").hide()
 			get_node("Bainha").hide()
 			get_node("Icon4").show()	
-		4:
-			get_node("Icon4").hide()	
-			get_node("Icon5").show()
 			
 			$Craft.hide()
 
 
 func _on_craft_pressed():
-	if weapon_estate <=3:
+	if weapon_estate <=2:
 		weapon_estate +=1
 
 

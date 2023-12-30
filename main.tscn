@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=29 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
-[ext_resource type="Texture2D" uid="uid://dfwqf04y2d5f4" path="res://icon.svg" id="2_j0k3y"]
 [ext_resource type="PackedScene" uid="uid://b54ybogrb6swr" path="res://sprites/cursores/cursor.tscn" id="2_xgn82"]
 [ext_resource type="Texture2D" uid="uid://b8xvduydg17an" path="res://sprites/maças/SemiMaçaB.png" id="4_3gv1x"]
 [ext_resource type="Texture2D" uid="uid://cxb53njoue468" path="res://sprites/maças/MaçaB.png" id="5_eew8u"]
@@ -10,11 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://bc2ou8crbwwyc" path="res://sprites/maças/MaçaCompletaB.png" id="6_ri0c1"]
 [ext_resource type="Texture2D" uid="uid://bdcs6pvdp732s" path="res://sprites/maças/MaçaCompletaF.png" id="7_mefm3"]
 [ext_resource type="Texture2D" uid="uid://ca256t3sblus7" path="res://sprites/maças/Bainha.png" id="8_87mye"]
+[ext_resource type="Texture2D" uid="uid://rtm6fe3njndi" path="res://sprites/maças/MaçaCompletaA.png" id="8_cy04y"]
+[ext_resource type="Texture2D" uid="uid://cys61uv2f6kpl" path="res://sprites/maças/MaçaCompletaT.png" id="9_24p4o"]
 [ext_resource type="Texture2D" uid="uid://rl1uyek3lgyn" path="res://sprites/machados/SemiMachadoB.png" id="9_b26sh"]
 [ext_resource type="Texture2D" uid="uid://b6g5ojlo4xy0k" path="res://sprites/machados/MachadoB.png" id="10_ntx0p"]
 [ext_resource type="Texture2D" uid="uid://c6lcfqnokcg48" path="res://sprites/machados/MachadoCompletoB.png" id="11_gqbx6"]
 [ext_resource type="Texture2D" uid="uid://ctf5geubfxuhg" path="res://sprites/machados/MachadoCompletoF.png" id="12_rwkau"]
 [ext_resource type="Texture2D" uid="uid://is2m32fkichj" path="res://sprites/machados/bainha.png" id="13_l0dxl"]
+[ext_resource type="Texture2D" uid="uid://sf71p0qnov1x" path="res://sprites/machados/MachadoCompletoA.png" id="15_6f01v"]
+[ext_resource type="Texture2D" uid="uid://d03j75c5rbxyg" path="res://sprites/runas/runasA.png" id="16_6y3ph"]
+[ext_resource type="Texture2D" uid="uid://dpnqdd5omjkyd" path="res://sprites/machados/MachadoCompletoT.png" id="16_lokdk"]
+[ext_resource type="Texture2D" uid="uid://dcrra07a1rs1f" path="res://sprites/UI/Background.png" id="16_tllev"]
+[ext_resource type="Texture2D" uid="uid://blqmn5yafruos" path="res://sprites/runas/runasF.png" id="17_1bqvo"]
+[ext_resource type="Texture2D" uid="uid://bhlv0yx7j15t7" path="res://sprites/runas/runasT.png" id="18_11bld"]
+[ext_resource type="Texture2D" uid="uid://cjcsqnkenhurb" path="res://sprites/charms/CharmAmor.png" id="19_8vwco"]
+[ext_resource type="Texture2D" uid="uid://cs327mx8lpwo2" path="res://sprites/charms/CharmForça.png" id="20_b1nxy"]
+[ext_resource type="Texture2D" uid="uid://cdds7idgvsm8q" path="res://sprites/charms/CharmSorte.png" id="21_4vpdo"]
 
 [sub_resource type="GDScript" id="GDScript_kxox1"]
 script/source = "extends Node2D
@@ -174,7 +184,7 @@ func _on_area_2d_mouse_exited():
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
-size = Vector2(1141, 153)
+size = Vector2(702, 277)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qh5jr")
@@ -184,16 +194,12 @@ script = ExtResource("1_qh5jr")
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 y_sort_enabled = true
 
-[node name="Panel" type="Panel" parent="CanvasGroup"]
-offset_right = 1158.0
-offset_bottom = 656.0
-
 [node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
-position = Vector2(249, 534)
+position = Vector2(563, 92)
 mark = NodePath("../Marker2D")
 
 [node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
-position = Vector2(836, 542)
+position = Vector2(831, 102)
 script = SubResource("GDScript_kxox1")
 mark = NodePath("../Marker2D")
 
@@ -209,14 +215,20 @@ texture = ExtResource("5_eew8u")
 [node name="Icon4" parent="CanvasGroup/Mace" index="3"]
 texture = ExtResource("6_ri0c1")
 
-[node name="Icon5" parent="CanvasGroup/Mace" index="4"]
+[node name="Icon5F" parent="CanvasGroup/Mace" index="4"]
 texture = ExtResource("7_mefm3")
 
-[node name="Bainha" parent="CanvasGroup/Mace" index="5"]
+[node name="Icon5W" parent="CanvasGroup/Mace" index="5"]
+texture = ExtResource("8_cy04y")
+
+[node name="Icon5E" parent="CanvasGroup/Mace" index="6"]
+texture = ExtResource("9_24p4o")
+
+[node name="Bainha" parent="CanvasGroup/Mace" index="7"]
 texture = ExtResource("8_87mye")
 
 [node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark") instance=ExtResource("1_anqxf")]
-position = Vector2(519, 534)
+position = Vector2(696, 86)
 script = SubResource("GDScript_nn7fl")
 mark = NodePath("../Marker2D")
 
@@ -232,32 +244,33 @@ texture = ExtResource("10_ntx0p")
 [node name="Icon4" parent="CanvasGroup/Axe" index="3"]
 texture = ExtResource("11_gqbx6")
 
-[node name="Icon5" parent="CanvasGroup/Axe" index="4"]
+[node name="Icon5F" parent="CanvasGroup/Axe" index="4"]
 texture = ExtResource("12_rwkau")
 
-[node name="Bainha" parent="CanvasGroup/Axe" index="5"]
+[node name="Icon5W" parent="CanvasGroup/Axe" index="5"]
+texture = ExtResource("15_6f01v")
+
+[node name="Icon5E" parent="CanvasGroup/Axe" index="6"]
+texture = ExtResource("16_lokdk")
+
+[node name="Bainha" parent="CanvasGroup/Axe" index="7"]
 texture = ExtResource("13_l0dxl")
 
 [node name="Table" type="Node2D" parent="CanvasGroup"]
 position = Vector2(-13, -142)
 
-[node name="Icon" type="Sprite2D" parent="CanvasGroup/Table"]
-position = Vector2(586, 449.5)
-scale = Vector2(9.01563, 1.25781)
-texture = ExtResource("2_j0k3y")
-
 [node name="Table" type="Area2D" parent="CanvasGroup/Table"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasGroup/Table/Table"]
-position = Vector2(599, 450)
+position = Vector2(568, 498.5)
 shape = SubResource("RectangleShape2D_ydqo5")
 
 [node name="Marker2D" type="Marker2D" parent="CanvasGroup"]
-position = Vector2(571, 314)
+position = Vector2(556, 336)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 324)
-scale = Vector2(-214.752, 256.389)
+position = Vector2(596, 359)
+scale = Vector2(0.8, 0.8)
 
 [node name="Hammer" type="Button" parent="."]
 offset_left = 852.0
@@ -271,6 +284,104 @@ flat = true
 position = Vector2(16, 16)
 scale = Vector2(3, 3)
 texture = ExtResource("5_xfbyw")
+
+[node name="BG" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(598, 362)
+scale = Vector2(3.8, 3.8)
+texture = ExtResource("16_tllev")
+
+[node name="CanvasGroup2" type="CanvasGroup" parent="."]
+
+[node name="RunasA" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(78, 281)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_6y3ph")
+
+[node name="RunasA2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(74, 301)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_6y3ph")
+
+[node name="RunasA3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(87, 288)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_6y3ph")
+
+[node name="RunasF" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(133, 286)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_1bqvo")
+
+[node name="RunasF2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(120, 301)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_1bqvo")
+
+[node name="RunasF3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(118, 283)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("17_1bqvo")
+
+[node name="RunasT" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(104, 246)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_11bld")
+
+[node name="RunasT2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(116, 242)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_11bld")
+
+[node name="RunasT3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(121, 257)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_11bld")
+
+[node name="CharmAmor" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(74, 400)
+scale = Vector2(2, 2)
+texture = ExtResource("19_8vwco")
+
+[node name="CharmAmor2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(74, 415)
+scale = Vector2(2, 2)
+texture = ExtResource("19_8vwco")
+
+[node name="CharmAmor3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(88, 405)
+scale = Vector2(2, 2)
+texture = ExtResource("19_8vwco")
+
+[node name="CharmForça" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(121, 403)
+scale = Vector2(2, 2)
+texture = ExtResource("20_b1nxy")
+
+[node name="CharmForça2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(126, 419)
+scale = Vector2(2, 2)
+texture = ExtResource("20_b1nxy")
+
+[node name="CharmForça3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(137, 403)
+scale = Vector2(2, 2)
+texture = ExtResource("20_b1nxy")
+
+[node name="CharmSorte" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(80, 457)
+scale = Vector2(2, 2)
+texture = ExtResource("21_4vpdo")
+
+[node name="CharmSorte2" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(97, 459)
+scale = Vector2(2, 2)
+texture = ExtResource("21_4vpdo")
+
+[node name="CharmSorte3" type="Sprite2D" parent="CanvasGroup2"]
+position = Vector2(86, 448)
+scale = Vector2(2, 2)
+texture = ExtResource("21_4vpdo")
 
 [connection signal="mouse_exited" from="CanvasGroup/Table/Table" to="Cursor" method="_on_table_mouse_exited"]
 [connection signal="pressed" from="Hammer" to="Cursor" method="_on_hammer_pressed"]

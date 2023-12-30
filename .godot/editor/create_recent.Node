@@ -1,3 +1,4 @@
+CanvasGroup
 Sprite2D
 CollisionShape2D
 Area2D
@@ -6,7 +7,6 @@ ResourcePreloader
 Node2D
 Camera2D
 Panel
-CanvasGroup
 AnimatedSprite2D
 Marker2D
 StaticBody2D
