@@ -8,13 +8,19 @@ var rune_name: String
 @export var rune: Node2D
 var set_rune = false
 
+@export var pega_audio: AudioStreamPlayer2D
+@export var crafta_audio: AudioStreamPlayer2D
+@export var coloca_audio: AudioStreamPlayer2D
+
 func _ready():
 	pass
 	
 func _process(delta):
 	if Input.is_action_pressed("mouse_select") and selected:
+		pega_audio.play()
 		FollowMouse()
 	elif Input.is_action_just_released("mouse_select") and on_table:
+		coloca_audio.play()
 		position = mark.position
 		$Craft.show()
 	elif Input.is_action_just_released("mouse_select") and !on_table:
@@ -77,6 +83,7 @@ func DefineRune():
 
 func _on_craft_pressed():
 	if weapon_estate <=2:
+		crafta_audio.play()
 		weapon_estate +=1
 
 

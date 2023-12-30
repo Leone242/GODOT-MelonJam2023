@@ -9,8 +9,8 @@ script = ExtResource("1_lf07l")
 modulate = Color(0.247059, 0.12549, 1, 1)
 self_modulate = Color(0, 0, 0.803922, 1)
 y_sort_enabled = true
-offset_right = 1161.0
-offset_bottom = 657.0
+offset_right = 1198.0
+offset_bottom = 724.0
 
 [node name="Play" type="Button" parent="Panel"]
 y_sort_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvcsq6tphnwwr"]
+[gd_scene load_steps=43 format=3 uid="uid://dvcsq6tphnwwr"]
 
 [ext_resource type="PackedScene" uid="uid://bsqnjxw0f1l8t" path="res://weapon.tscn" id="1_anqxf"]
 [ext_resource type="Script" path="res://main.gd" id="1_qh5jr"]
@@ -33,6 +33,12 @@
 [ext_resource type="Texture2D" uid="uid://qjhbe1qshk71" path="res://sprites/UI/Botão.png" id="30_bcr7y"]
 [ext_resource type="PackedScene" uid="uid://c0r7shauoi2ko" path="res://maça.tscn" id="31_pfk3j"]
 [ext_resource type="Texture2D" uid="uid://cw0usrh37h013" path="res://sprites/UI/Moeda.png" id="33_qls7h"]
+[ext_resource type="AudioStream" uid="uid://bio5hikl5cbo8" path="res://sons/coin.wav" id="34_0h8rk"]
+[ext_resource type="AudioStream" uid="uid://de50mxsi3mvsg" path="res://sons/sword-unsheathe2.wav" id="35_tdndn"]
+[ext_resource type="AudioStream" uid="uid://dvd2a2ygv61pc" path="res://sons/metal-ringing.wav" id="36_sojoo"]
+[ext_resource type="AudioStream" uid="uid://cdyt1yx6l1mkg" path="res://sons/metal-small1.wav" id="37_udr2y"]
+[ext_resource type="AudioStream" uid="uid://biygika2axnut" path="res://sons/metal-small3.wav" id="38_r5jk8"]
+[ext_resource type="AudioStream" uid="uid://b4thr4kaiyaip" path="res://sons/interface1.wav" id="39_keh2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydqo5"]
 size = Vector2(702, 277)
@@ -48,14 +54,20 @@ var rune_name: String
 @export var rune: Node2D
 var set_rune = false
 
+@export var pega_audio: AudioStreamPlayer2D
+@export var crafta_audio: AudioStreamPlayer2D
+@export var coloca_audio: AudioStreamPlayer2D
+
 func _ready():
 	pass
 	
 func _process(delta):
 	if Input.is_action_pressed(\"mouse_select\") and selected:
+		pega_audio.play()
 		FollowMouse()
 	elif Input.is_action_just_released(\"mouse_select\") and on_table:
 		position = mark.position
+		coloca_audio.play()
 		$Craft.show()
 	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
 		$Craft.hide()
@@ -117,6 +129,7 @@ func DefineRune():
 
 func _on_craft_pressed():
 	if weapon_estate <=2:
+		crafta_audio.play()
 		weapon_estate +=1
 
 
@@ -141,13 +154,19 @@ var rune_name: String
 @export var rune: Node2D
 var set_rune = false
 
+@export var pega_audio: AudioStreamPlayer2D
+@export var crafta_audio: AudioStreamPlayer2D
+@export var coloca_audio: AudioStreamPlayer2D
+
 func _ready():
 	pass
 	
 func _process(delta):
 	if Input.is_action_pressed(\"mouse_select\") and selected:
+		pega_audio.play()
 		FollowMouse()
 	elif Input.is_action_just_released(\"mouse_select\") and on_table:
+		coloca_audio.play()
 		position = mark.position
 		$Craft.show()
 	elif Input.is_action_just_released(\"mouse_select\") and !on_table:
@@ -209,6 +228,7 @@ func DefineRune():
 
 func _on_craft_pressed():
 	if weapon_estate <=2:
+		crafta_audio.play()
 		weapon_estate +=1
 
 
@@ -223,8 +243,11 @@ func _on_area_2d_mouse_exited():
 
 "
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("coin_audio", "metal_audio", "botao_audio")]
 script = ExtResource("1_qh5jr")
+coin_audio = NodePath("audio_coin")
+metal_audio = NodePath("audio_metal1")
+botao_audio = NodePath("audio_botao")
 
 [node name="Cursor" parent="." instance=ExtResource("2_xgn82")]
 
@@ -240,16 +263,22 @@ shape = SubResource("RectangleShape2D_ydqo5")
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 y_sort_enabled = true
 
-[node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
+[node name="Sword" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune", "pega_audio", "crafta_audio", "coloca_audio") instance=ExtResource("1_anqxf")]
 position = Vector2(563, 92)
 mark = NodePath("../Marker2D")
 rune = NodePath("../../Runes")
+pega_audio = NodePath("../../audio_pegar")
+crafta_audio = NodePath("../../audio_craft")
+coloca_audio = NodePath("../../audio_colocar")
 
-[node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
+[node name="Mace" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune", "pega_audio", "crafta_audio", "coloca_audio") instance=ExtResource("1_anqxf")]
 position = Vector2(831, 102)
 script = SubResource("GDScript_lhwfe")
 mark = NodePath("../Marker2D")
 rune = NodePath("../../Runes")
+pega_audio = NodePath("../../audio_pegar")
+crafta_audio = NodePath("../../audio_craft")
+coloca_audio = NodePath("../../audio_colocar")
 
 [node name="Icon" parent="CanvasGroup/Mace" index="0"]
 texture = ExtResource("4_3gv1x")
@@ -275,11 +304,14 @@ texture = ExtResource("9_24p4o")
 [node name="Bainha" parent="CanvasGroup/Mace" index="7"]
 texture = ExtResource("8_87mye")
 
-[node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune") instance=ExtResource("1_anqxf")]
+[node name="Axe" parent="CanvasGroup" node_paths=PackedStringArray("mark", "rune", "pega_audio", "crafta_audio", "coloca_audio") instance=ExtResource("1_anqxf")]
 position = Vector2(696, 86)
 script = SubResource("GDScript_gbwv2")
 mark = NodePath("../Marker2D")
 rune = NodePath("../../Runes")
+pega_audio = NodePath("../../audio_pegar")
+crafta_audio = NodePath("../../audio_craft")
+coloca_audio = NodePath("../../audio_colocar")
 
 [node name="Icon" parent="CanvasGroup/Axe" index="0"]
 texture = ExtResource("9_b26sh")
@@ -514,6 +546,24 @@ offset_right = 217.0
 offset_bottom = 106.0
 theme_override_font_sizes/font_size = 37
 text = "000"
+
+[node name="audio_coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_0h8rk")
+
+[node name="audio_metal1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("35_tdndn")
+
+[node name="audio_craft" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_sojoo")
+
+[node name="audio_pegar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("37_udr2y")
+
+[node name="audio_colocar" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("38_r5jk8")
+
+[node name="audio_botao" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("39_keh2q")
 
 [connection signal="area_exited" from="Table/Table" to="." method="_on_table_area_exited"]
 [connection signal="mouse_exited" from="Table/Table" to="Cursor" method="_on_table_mouse_exited"]
