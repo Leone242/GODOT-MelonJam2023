@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://2yic4jji70dh"]
+
+[ext_resource type="Texture2D" uid="uid://d03j75c5rbxyg" path="res://sprites/runas/runasA.png" id="1_vlxeo"]
+[ext_resource type="Texture2D" uid="uid://blqmn5yafruos" path="res://sprites/runas/runasF.png" id="2_4labu"]
+[ext_resource type="Texture2D" uid="uid://bhlv0yx7j15t7" path="res://sprites/runas/runasT.png" id="3_qmw6j"]
+
+[node name="Rune" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vlxeo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(24, 0)
+texture = ExtResource("2_4labu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(48, 0)
+texture = ExtResource("3_qmw6j")
