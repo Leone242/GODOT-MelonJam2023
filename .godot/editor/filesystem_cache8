@@ -76,6 +76,8 @@ SemiMaçaT.png::CompressedTexture2D::9102562922552614161::1703812982::1703812982
 runasA.png::CompressedTexture2D::8972390897659601642::1703894880::1703894880::1::::<><>::
 runasF.png::CompressedTexture2D::3192281439793558678::1703894880::1703894880::1::::<><>::
 runasT.png::CompressedTexture2D::2901771743707626302::1703894880::1703894880::1::::<><>::
-::res://sprites/UI/::1703903500
+::res://sprites/UI/::1703908989
 Background.png::CompressedTexture2D::7335767711604343529::1703900093::1703900094::1::::<><>::
+Botão.png::CompressedTexture2D::1142027953747950298::1703908989::1703908990::1::::<><>::
 Moeda.png::CompressedTexture2D::6369852760445869292::1703903500::1703903500::1::::<><>::
+Vitoria.png::CompressedTexture2D::3016369238725421543::1703908989::1703908990::1::::<><>::
